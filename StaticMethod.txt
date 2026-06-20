@@ -1,0 +1,37 @@
+//StaticMethod
+
+/*
+   Q) Why is the Java main method static?
+
+Ans) It is because the object is not required to call a static method. If it were a non-
+static method, JVM creates an object first then call main() method that will lead the
+problem of extra memory allocation.
+   */
+
+class Student{
+int roll;
+String name;
+static String college="XYZ";
+static void change(){
+college="PQR";
+}
+Student(int r,String n){
+roll=r;
+name=n;
+}
+
+void display(){
+System.out.println(roll+" "+name+" "+college);
+}
+}
+public class Main{
+public static void main(String[] args){
+	Student s1=new Student(1,"Ganga");
+	Student s2=new Student(2,"Yamuna");
+	Student s3=new Student(3,"Saraswati");
+	s1.display();
+	s2.display();
+	Student.change();//static method call without instance of class
+	s3.display();
+}
+}
